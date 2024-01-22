@@ -73,18 +73,26 @@ function TaskList(props) {
 			</main>
 			<Modal
 				open={!!taskIdEditModal}
-				onClose={() => setTaskIdEditModal("")}
-				hideBackdrop={true}
 				style={{
-					width: "fit-content",
-					height: "fit-content",
+					background: "rgba(1, 1, 1, .5)",
 				}}
+				hideBackdrop={true}
 			>
-				<TaskEditForm
-					task={taskLists?.find((e) => e?.id === taskIdEditModal)}
-					updateTask={updateTask}
-					closeTaskEditForm={() => setTaskIdEditModal("")}
-				></TaskEditForm>
+				<Modal
+					open={!!taskIdEditModal}
+					onClose={() => setTaskIdEditModal("")}
+					hideBackdrop={true}
+					style={{
+						width: "fit-content",
+						height: "fit-content",
+					}}
+				>
+					<TaskEditForm
+						task={taskLists?.find((e) => e?.id === taskIdEditModal)}
+						updateTask={updateTask}
+						closeTaskEditForm={() => setTaskIdEditModal("")}
+					></TaskEditForm>
+				</Modal>
 			</Modal>
 		</TaskListRoot>
 	);
